@@ -2,6 +2,7 @@ package cn.beijing.pku.mobilesafe.Pager;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.view.View;
 import android.widget.TextView;
 
 import cn.beijing.pku.mobilesafe.Utils.ConstValueUtil;
@@ -18,12 +19,14 @@ public class SettingPager extends BasePager {
 
     @Override
     public void initData() {
-        LogUtil.v(ConstValueUtil.TAG, "加载第一个页面");
+        LogUtil.v(ConstValueUtil.TAG, "加载第5个页面");
+
 //        填充布局
         TextView view = new TextView(mActivity);
         view.setText("设置");
         view.setTextColor(Color.RED);
         flContent.addView(view);
         tvTitle.setText("设置");
+        btnMenu.setVisibility(View.INVISIBLE);
     }
 }

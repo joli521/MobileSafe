@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
 import java.util.ArrayList;
 
+import cn.beijing.pku.mobilesafe.Activity.HomeActivity;
 import cn.beijing.pku.mobilesafe.Pager.BasePager;
 import cn.beijing.pku.mobilesafe.Pager.GovAffairsPager;
 import cn.beijing.pku.mobilesafe.Pager.HomePager;
@@ -16,7 +19,10 @@ import cn.beijing.pku.mobilesafe.Pager.NewsCenterPager;
 import cn.beijing.pku.mobilesafe.Pager.SettingPager;
 import cn.beijing.pku.mobilesafe.Pager.SmartServicePager;
 import cn.beijing.pku.mobilesafe.R;
+import cn.beijing.pku.mobilesafe.Utils.ConstValueUtil;
+import cn.beijing.pku.mobilesafe.Utils.LogUtil;
 import cn.beijing.pku.mobilesafe.View.NoScrollViewPager;
+import me.tangke.slidemenu.SlideMenu;
 
 
 /**
@@ -80,6 +86,13 @@ public class ContentFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
+                BasePager pager = mPagers.get(position);
+                pager.initData();
+                if (position == 0 || position == mPagers.size() - 1) {
+                    setSlidingMenuEnable(false);
+                }else{
+                    setSlidingMenuEnable(true);
+                }
 
             }
 
@@ -90,6 +103,19 @@ public class ContentFragment extends BaseFragment {
         });
 //        添加默认第一页数据
         mPagers.get(0).initData();
+
+    }
+
+    public void setSlidingMenuEnable(boolean enable) {
+//        获取侧边栏对象
+        HomeActivity mainUI = (HomeActivity) mActivity;
+        SlidingMenu slidingMenu = mainUI.getSlidingMenu();
+        if (enable) {
+            slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+
+        }else{
+            slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+        }
 
     }
 
@@ -113,6 +139,7 @@ public class ContentFragment extends BaseFragment {
             // pager.initData();// 初始化数据, viewpager会默认加载下一个页面,
             // 为了节省流量和性能,不要在此处调用初始化数据的方法
             container.addView(view);
+
             return view;
         }
 
