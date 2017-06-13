@@ -12,17 +12,14 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import java.util.ArrayList;
 
 import cn.beijing.pku.mobilesafe.Activity.HomeActivity;
-import cn.beijing.pku.mobilesafe.Pager.BasePager;
-import cn.beijing.pku.mobilesafe.Pager.GovAffairsPager;
-import cn.beijing.pku.mobilesafe.Pager.HomePager;
-import cn.beijing.pku.mobilesafe.Pager.NewsCenterPager;
-import cn.beijing.pku.mobilesafe.Pager.SettingPager;
-import cn.beijing.pku.mobilesafe.Pager.SmartServicePager;
+import cn.beijing.pku.mobilesafe.BasePager.BasePager;
+import cn.beijing.pku.mobilesafe.BottomPager.GovAffairsPager;
+import cn.beijing.pku.mobilesafe.BottomPager.HomePager;
+import cn.beijing.pku.mobilesafe.BottomPager.NewsCenterPager;
+import cn.beijing.pku.mobilesafe.BottomPager.SettingPager;
+import cn.beijing.pku.mobilesafe.BottomPager.SmartServicePager;
 import cn.beijing.pku.mobilesafe.R;
-import cn.beijing.pku.mobilesafe.Utils.ConstValueUtil;
-import cn.beijing.pku.mobilesafe.Utils.LogUtil;
 import cn.beijing.pku.mobilesafe.View.NoScrollViewPager;
-import me.tangke.slidemenu.SlideMenu;
 
 
 /**
@@ -103,7 +100,7 @@ public class ContentFragment extends BaseFragment {
         });
 //        添加默认第一页数据
         mPagers.get(0).initData();
-
+        setSlidingMenuEnable(false);
     }
 
     public void setSlidingMenuEnable(boolean enable) {
@@ -117,6 +114,11 @@ public class ContentFragment extends BaseFragment {
             slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
         }
 
+    }
+    // 获取新闻中心页面
+    public NewsCenterPager getNewsCenterPager() {
+        NewsCenterPager pager = (NewsCenterPager) mPagers.get(1);
+        return pager;
     }
 
     class  ContentAdapter extends PagerAdapter{

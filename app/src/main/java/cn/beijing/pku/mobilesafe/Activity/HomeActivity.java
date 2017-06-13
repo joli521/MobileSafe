@@ -27,13 +27,17 @@ public class HomeActivity extends SlidingActivity {
         SlideMenu slideMenu = new SlideMenu(this);
         setContentView(R.layout.activity_home);
 
-        setBehindContentView(R.layout.left_menu);
-        SlidingMenu slidingMenu = new SlidingMenu(this);
+        setBehindContentView(R.layout.left_menu);// 设置侧滑菜单
+        SlidingMenu slidingMenu = getSlidingMenu(); //获得侧滑菜单控件
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);// 全屏触摸
-        slidingMenu.setBehindOffset(200);// 屏幕预留200像素宽度
+        slidingMenu.setBehindOffset(400);// 屏幕预留200像素宽度
         initFragment();
     }
 
+    /**
+     * @func:主要是用两个Fragment替换原来布局的FrameLayout布局（动态加载Fragment)
+     * 步骤：1.获得FragmentManager 2.开始FragmentTransaction，进行替换 3.提交事务操作结果
+     */
     private void initFragment() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -41,15 +45,20 @@ public class HomeActivity extends SlidingActivity {
         ft.replace(R.id.fl_main, new ContentFragment(),TAG_CONT_MAIN);
         ft.commit();
     }
-    //获得左边的fragment
-    public LeftMenuFragment getLeftFragement(){
+
+
+    /**
+     * @func:  获得左边的fragment:
+     */
+    public LeftMenuFragment getLeftMenuFragement(){
         FragmentManager fm = getFragmentManager();
         LeftMenuFragment fragment = (LeftMenuFragment) fm.findFragmentByTag(TAG_LEFT_MENU);
         return fragment;
     }
-    //获得右边的fragment
+    /**
+     * @func:    获得右边的fragment
+     */
     public ContentFragment getContentFragement(){
-//        888888888888888888888888888888888888888
         FragmentManager fm = getFragmentManager();
         ContentFragment fragment = (ContentFragment) fm.findFragmentByTag(TAG_CONT_MAIN);
         return fragment;

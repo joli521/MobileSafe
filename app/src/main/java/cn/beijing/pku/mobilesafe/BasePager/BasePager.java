@@ -1,4 +1,4 @@
-package cn.beijing.pku.mobilesafe.Pager;
+package cn.beijing.pku.mobilesafe.BasePager;
 
 import android.app.Activity;
 import android.view.View;
@@ -13,7 +13,8 @@ import cn.beijing.pku.mobilesafe.R;
  */
 
 /**
- * 五个标签页的父类
+ * @func 五个标签页的父类:1.标题、标题栏菜单、FrameLayout为五个标签页共有，所以设置成属性 2.标签页会与leftFragment交互，所以增加Activity属性
+ *  3.因为需要拿到这五个标签页，所以增加view属性 4.因为需要数据交换、动态初始化UI等，增加两个方法
  */
 public class BasePager {
     public Activity mActivity;

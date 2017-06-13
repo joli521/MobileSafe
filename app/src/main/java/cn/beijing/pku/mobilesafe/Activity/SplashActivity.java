@@ -37,10 +37,15 @@ public class SplashActivity extends BaseActivity {
         initUI();
         initAnimation();
     }
-
+    /**
+     *  @func:初始化UI:主要是获得控件
+     */
+    private void initUI() {
+        rl = (RelativeLayout) findViewById(R.id.rl_splash);
+    }
 
     /**
-     * 初始化动画界面
+     * @func:初始化动画界面
      */
     private void initAnimation() {
         RotateAnimation animRotate = new RotateAnimation(0, 360,
@@ -61,7 +66,9 @@ public class SplashActivity extends BaseActivity {
         animAlpha.setDuration(2000);// 动画时间
         animAlpha.setFillAfter(true);// 保持动画结束状态
 
-        // 动画集合
+        /**
+         *   动画集合:将三种动画添加到集合中，最后使用布局器启动动画集合
+         */
         AnimationSet set = new AnimationSet(true);
         set.addAnimation(animRotate);
         set.addAnimation(animScale);
@@ -70,6 +77,7 @@ public class SplashActivity extends BaseActivity {
         // 启动动画
         rl.startAnimation(set);
 
+        /**< 监听动画结束后，进行跳转*/
         set.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -100,13 +108,6 @@ public class SplashActivity extends BaseActivity {
             }
         });
 
-    }
-
-    /**
-     * 初始化UI:主要是获得控件
-     */
-    private void initUI() {
-        rl = (RelativeLayout) findViewById(R.id.rl_splash);
     }
 
 

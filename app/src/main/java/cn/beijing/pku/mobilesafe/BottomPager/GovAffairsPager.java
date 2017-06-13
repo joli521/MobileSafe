@@ -1,11 +1,12 @@
-package cn.beijing.pku.mobilesafe.Pager;
+package cn.beijing.pku.mobilesafe.BottomPager;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
-import cn.beijing.pku.mobilesafe.Utils.ConstValueUtil;
+import cn.beijing.pku.mobilesafe.BasePager.BasePager;
+import cn.beijing.pku.mobilesafe.Utils.ConstantUtil;
 import cn.beijing.pku.mobilesafe.Utils.LogUtil;
 
 /**
@@ -19,7 +20,7 @@ public class GovAffairsPager extends BasePager {
 
     @Override
     public void initData() {
-        LogUtil.v(ConstValueUtil.TAG, "加载第4个页面");
+        LogUtil.v(ConstantUtil.TAG, "加载第4个页面");
 //        填充布局
         TextView view = new TextView(mActivity);
         view.setText("the first");
