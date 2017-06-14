@@ -12,8 +12,8 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import java.util.ArrayList;
 
 import cn.beijing.pku.mobilesafe.Activity.HomeActivity;
-import cn.beijing.pku.mobilesafe.Domain.NewsMenu;
-import cn.beijing.pku.mobilesafe.BottomPager.NewsCenterPager;
+import cn.beijing.pku.mobilesafe.BottomButtonPager.NewsCenterPager;
+import cn.beijing.pku.mobilesafe.Domain.NewsMenuBean;
 import cn.beijing.pku.mobilesafe.R;
 
 /**
@@ -22,7 +22,7 @@ import cn.beijing.pku.mobilesafe.R;
 
 public class LeftMenuFragment extends BaseFragment {
     private ListView lvList;
-    private ArrayList<NewsMenu.NewsMenuData> mNewsMenuData;// 侧边栏网络数据对象
+    private ArrayList<NewsMenuBean.NewsMenuData> mNewsMenuData;// 侧边栏网络数据对象
     private int mCurrPosition;
     private LeftMenuAdapter mLeftAdpater;
     @Override
@@ -41,8 +41,8 @@ public class LeftMenuFragment extends BaseFragment {
      * @func:设置侧边菜单的数据：从NewsCenterPager中获取数据，填充到适配器中
      * @param data
      */
-    public void setMenuData(ArrayList<NewsMenu.NewsMenuData> data){
-        mCurrPosition = 0;
+    public void setMenuData(ArrayList<NewsMenuBean.NewsMenuData> data){
+//      mCurrPosition = 0;
         mNewsMenuData = data;
         mLeftAdpater = new LeftMenuAdapter();
         lvList.setAdapter(mLeftAdpater);
@@ -102,7 +102,7 @@ public class LeftMenuFragment extends BaseFragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = View.inflate(mActivity, R.layout.list_item_left_menu, null);
             TextView tvMenu = (TextView) view.findViewById(R.id.tv_menu);
-            NewsMenu.NewsMenuData item = (NewsMenu.NewsMenuData) getItem(position);
+            NewsMenuBean.NewsMenuData item = (NewsMenuBean.NewsMenuData) getItem(position);
             tvMenu.setText(item.title);
             if (position == mCurrPosition){
                 tvMenu.setEnabled(true);

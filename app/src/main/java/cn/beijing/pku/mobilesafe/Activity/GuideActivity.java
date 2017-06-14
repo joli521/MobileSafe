@@ -34,7 +34,7 @@ public class GuideActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("test");
+//        System.out.println("test");
 //      getSupportActionBar().hide();  //去掉标题栏,只能去掉单个Acitvity
         setContentView(R.layout.activity_guide);
         initUI();

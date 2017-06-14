@@ -2,10 +2,6 @@ package cn.beijing.pku.mobilesafe.Http;
 
 import org.xutils.http.annotation.HttpResponse;
 
-import java.util.ArrayList;
-
-import cn.beijing.pku.mobilesafe.Domain.NewsMenu;
-
 /**
  * Created by wyouflf on 15/11/5.
  * json 返回值示例, 如果它作为Callback的泛型,

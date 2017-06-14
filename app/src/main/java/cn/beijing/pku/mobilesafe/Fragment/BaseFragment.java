@@ -8,10 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
-import cn.beijing.pku.mobilesafe.Domain.NewsMenu;
-
 /**
  * Created by Administrator on 2017.6.11.
  * 1.因为左右两个Fragment都必须进行两项操作：1.初始化UI  2.填充数据（pager页面）所以可以抽取成基类；

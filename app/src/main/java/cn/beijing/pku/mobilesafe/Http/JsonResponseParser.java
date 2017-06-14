@@ -1,17 +1,11 @@
 package cn.beijing.pku.mobilesafe.Http;
 
-import com.google.gson.Gson;
-
 import org.xutils.http.app.ResponseParser;
 import org.xutils.http.request.UriRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.beijing.pku.mobilesafe.Domain.NewsMenu;
-import cn.beijing.pku.mobilesafe.Utils.ConstantUtil;
-import cn.beijing.pku.mobilesafe.Utils.LogUtil;
 
 /**
  * Created by wyouflf on 15/11/5.

@@ -12,12 +12,12 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import java.util.ArrayList;
 
 import cn.beijing.pku.mobilesafe.Activity.HomeActivity;
-import cn.beijing.pku.mobilesafe.BasePager.BasePager;
-import cn.beijing.pku.mobilesafe.BottomPager.GovAffairsPager;
-import cn.beijing.pku.mobilesafe.BottomPager.HomePager;
-import cn.beijing.pku.mobilesafe.BottomPager.NewsCenterPager;
-import cn.beijing.pku.mobilesafe.BottomPager.SettingPager;
-import cn.beijing.pku.mobilesafe.BottomPager.SmartServicePager;
+import cn.beijing.pku.mobilesafe.BasePager.BaseBottmButtonPager;
+import cn.beijing.pku.mobilesafe.BottomButtonPager.GovAffairsPager;
+import cn.beijing.pku.mobilesafe.BottomButtonPager.HomePager;
+import cn.beijing.pku.mobilesafe.BottomButtonPager.NewsCenterPager;
+import cn.beijing.pku.mobilesafe.BottomButtonPager.SettingPager;
+import cn.beijing.pku.mobilesafe.BottomButtonPager.SmartServicePager;
 import cn.beijing.pku.mobilesafe.R;
 import cn.beijing.pku.mobilesafe.View.NoScrollViewPager;
 
@@ -27,7 +27,7 @@ import cn.beijing.pku.mobilesafe.View.NoScrollViewPager;
  */
 public class ContentFragment extends BaseFragment {
     private NoScrollViewPager  mViewPager;
-    private ArrayList<BasePager> mPagers;
+    private ArrayList<BaseBottmButtonPager> mPagers;
     private RadioGroup mRadioGroup;
     @Override
     public View initView() {
@@ -77,20 +77,19 @@ public class ContentFragment extends BaseFragment {
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                BasePager pager = mPagers.get(position);
+                BaseBottmButtonPager pager = mPagers.get(position);
                 pager.initData();
             }
 
             @Override
             public void onPageSelected(int position) {
-                BasePager pager = mPagers.get(position);
+                BaseBottmButtonPager pager = mPagers.get(position);
                 pager.initData();
                 if (position == 0 || position == mPagers.size() - 1) {
                     setSlidingMenuEnable(false);
                 }else{
                     setSlidingMenuEnable(true);
                 }
-
             }
 
             @Override
@@ -122,21 +121,18 @@ public class ContentFragment extends BaseFragment {
     }
 
     class  ContentAdapter extends PagerAdapter{
-
         @Override
         public int getCount() {
             return mPagers.size();
         }
-
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
-
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
 
-            BasePager pager = mPagers.get(position);
+            BaseBottmButtonPager pager = mPagers.get(position);
             View view = pager.mRootView; // 获取当前页面对象的布局
             // pager.initData();// 初始化数据, viewpager会默认加载下一个页面,
             // 为了节省流量和性能,不要在此处调用初始化数据的方法
@@ -144,7 +140,6 @@ public class ContentFragment extends BaseFragment {
 
             return view;
         }
-
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
